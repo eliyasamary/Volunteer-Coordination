@@ -3,7 +3,7 @@ import "../style/styles.css";
 
 const Header = () => {
   return (
-    <Box className="footer-component center-flex">
+    <Box className="footer-component center-flex font-primary">
       {" "}
       &copy; Eliya Samary, Asaf Zafrir, Inon Maman
     </Box>

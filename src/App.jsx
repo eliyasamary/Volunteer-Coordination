@@ -12,7 +12,7 @@ const App = () => {
         <Header></Header>
         <Navigation></Navigation>
       </Box>
-      <Outlet style={{ height: "100%" }} />
+      <Outlet />
       <Footer></Footer>
     </Box>
   );

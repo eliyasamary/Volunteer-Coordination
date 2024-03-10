@@ -4,7 +4,7 @@ import React from "react";
 import { getAllItems } from "../HTTP/http";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const AllNews = () => {
+const AllItems = () => {
   const [items, setItems] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -26,15 +26,12 @@ const AllNews = () => {
 
   return (
     <Box className="content-box">
-      <h1 className="title">All News</h1>
+      <h1 className="title">Volunteer Tasks</h1>
       <Box className="items-container">
         {items.map((item) => (
-          <Box key={item._id} className="item-box">
-            <Box className="item-title">{item.title}</Box>
+          <Box key={item._id} className="item-box center-flex-col ">
+            <Box className="item-title font-primary">{item.title}</Box>
             <Box className="item-description">{item.description}</Box>
-            {/* <Box className="item-image">
-              <img src={item.image} alt={item.title} />
-            </Box> */}
           </Box>
         ))}
       </Box>
@@ -42,4 +39,4 @@ const AllNews = () => {
   );
 };
 
-export default AllNews;
+export default AllItems;

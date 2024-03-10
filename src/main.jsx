@@ -1,12 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import AllNews from "./Screens/AllNews";
+import AllItems from "./Screens/AllNews";
 import FindItem from "./Screens/FindItem";
 import NewItem from "./Screens/NewItem";
-// import SpecificDonation from "./Components/SpesificDonation.jsx";
-// import NewDonation from "./Components/NewDonation.jsx";
-// import AllDonations from "./Components/AllDonations.jsx";
 // import ErrorNotFound from "./Components/ErrorNotFound404.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -19,12 +16,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/allItems",
-        element: <AllNews />,
+        element: <AllItems />,
         exact: true,
       },
       {
         path: "/",
-        element: <AllNews />,
+        element: <AllItems />,
         exact: true,
       },
       {
