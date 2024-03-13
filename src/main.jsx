@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import AllItems from "./Screens/AllNews";
+import AllItems from "./Screens/AllItems";
 import FindItem from "./Screens/FindItem";
 import NewItem from "./Screens/NewItem";
+import ItemPage from "./Screens/ItemPage";
 // import ErrorNotFound from "./Components/ErrorNotFound404.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
       {
         path: "/newItem",
         element: <NewItem />,
+        exact: true,
+      },
+      {
+        path: "/ItemPage/:itemId",
+        element: <ItemPage />,
         exact: true,
       },
     ],
