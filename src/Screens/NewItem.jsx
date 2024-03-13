@@ -53,42 +53,38 @@ const NewItem = () => {
   };
 
   return (
-    // <Box className="content-box">
-    //   <h1 className="title">New Article</h1>
-    //   <Box className="items-container">new item</Box>
-    // </Box>
-
     <Box className="content-box">
-      <h1 className="title">Create New Donation</h1>
+      <h1 className="title">New Volunteer</h1>
       <form onSubmit={handleSubmit} className="flex-container-col">
         <TextField
           className="input-field"
-          label="Title"
-          name="title"
-          value={data.title}
+          label="Name"
+          name="name"
+          value={data.name}
           onChange={handleInputChange}
         />
         <TextField
           className="input-field"
-          label="Description"
-          name="description"
-          value={data.description}
+          label="Location"
+          name="location"
+          value={data.location}
           onChange={handleInputChange}
         />
         <TextField
           className="input-field"
-          label="text"
-          name="text"
-          value={data.text}
+          label="Email"
+          name="email"
+          value={data.email}
           onChange={handleInputChange}
         />
         <TextField
           className="input-field"
-          label="author"
-          name="author"
-          value={data.author}
+          label="Password"
+          name="password"
+          value={data.password}
           onChange={handleInputChange}
         />
+        {/* skills */}
         <div className="btn-wrapper">
           <Button type="submit" variant="contained" className="nav-btn">
             Save

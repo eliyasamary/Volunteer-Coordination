@@ -2,6 +2,7 @@ import "../style/styles.css";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import DummyVolunteeringTasks from "../DummyData/DummyVolunteeringTasks.json";
+import Button from "@mui/material/Button";
 
 const ItemPage = () => {
   const { itemId } = useParams();
@@ -49,8 +50,11 @@ const ItemPage = () => {
             </Box>
             <Box className="detail-text">{data.time}</Box>
           </Box>
-        </Box>{" "}
+        </Box>
       </Box>
+      <Button variant="contained" className="btn-primary font-primary">
+        I want to sign up for this volunteering task
+      </Button>
     </Box>
   );
 };
