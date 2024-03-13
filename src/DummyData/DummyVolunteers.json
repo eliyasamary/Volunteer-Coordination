@@ -1,5 +1,16 @@
-{
-  "name": "Asaf Zafrir",
-  "location": "123 Main Street, Cityville, State, Country",
-  "email": ""
-}
+[
+  {
+    "name": "Asaf Zafrir",
+    "location": "123 Main Street, Cityville, State, Country",
+    "email": "asaf@asaf.com",
+    "password": "1234",
+    "skills": ["Organization", "communication", " follow instructions"]
+  },
+  {
+    "name": "Asaf Zafrir",
+    "location": "123 Main Street, Cityville, State, Country",
+    "email": "asaf@asaf.com",
+    "password": "1234",
+    "skills": ["Organization", "communication", " follow instructions"]
+  }
+]
