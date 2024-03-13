@@ -136,6 +136,16 @@
   box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 24px;
 }
 
+.detail-box {
+  width: 1000px;
+  height: 100px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 24px;
+  font-size: 24px;
+}
+
 .item-title {
   font-size: 36px;
   margin-bottom: 15px;
@@ -172,4 +182,31 @@
   align-items: center; */
   gap: 20px;
   width: 300px;
+}
+
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.detail-title {
+  width: 20%;
+  padding-left: 15px;
+  /* background-color: aqua; */
+}
+.detail-text {
+  width: 80%;
+}
+
+.link-decoration {
+  text-decoration: none;
+  color: #000;
+}
+
+.link-decoration:hover {
+  color: #000;
+  opacity: 0.6;
 }
