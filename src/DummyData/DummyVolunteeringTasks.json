@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "1",
+    "title": "Event Logistics Assistant",
+    "description": "Assist in setting up and dismantling event infrastructure, provide directions to attendees, and support overall event logistics",
+    "skills": ["Organization", "communication", " follow instructions"],
+    "requirements": "Willingness to work in outdoor environments and on weekends, ability to lift and move equipment",
+    "location": "Various event venues within the community",
+    "time": "Weekends, 8am-5pm"
+  },
+  {
+    "_id": "2",
+    "title": " Habitat Restoration Volunteer",
+    "description": "Participate in planting trees, removing invasive species, and restoring natural habitats to support environmental conservation efforts",
+    "skills": ["Organization", "communication", " follow instructions"],
+    "requirements": "Ability to work in various weather conditions, comfortable with physical labor",
+    "location": "Natural areas such as parks, forests, or riverbanks",
+    "time": "Weekends, 8am-5pm"
+  }
+]
