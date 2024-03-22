@@ -1,16 +1,20 @@
 [
   {
+    "_id": "5f8f1b3b9f4b9b0017f3b3b1",
     "name": "Asaf Zafrir",
     "location": "123 Main Street, Cityville, State, Country",
     "email": "asaf@asaf.com",
     "password": "1234",
-    "skills": ["Organization", "communication", " follow instructions"]
+    "skills": ["Organization", "communication", " follow instructions"],
+    "tasks": ["5f8f1b3b9f4b9b0017f3b3b1", "5f8f1b3b9f4b9b0017f3b3b2"]
   },
   {
+    "_id": "5f8f1b3b9f4bdfhg017f3b3b1",
     "name": "Asaf Zafrir",
     "location": "123 Main Street, Cityville, State, Country",
     "email": "asaf@asaf.com",
     "password": "1234",
-    "skills": ["Organization", "communication", " follow instructions"]
+    "skills": ["Organization", "communication", " follow instructions"],
+    "tasks": ["5f8f1b3b9f4b9b0017f3b3b1", "5f8f1b3b9f4b9b0017f3b3b2"]
   }
 ]

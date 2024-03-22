@@ -6,7 +6,9 @@
     "skills": ["Organization", "communication", " follow instructions"],
     "requirements": "Willingness to work in outdoor environments and on weekends, ability to lift and move equipment",
     "location": "Various event venues within the community",
-    "time": "Weekends, 8am-5pm"
+    "time": "Weekends, 8am-5pm",
+    "status": "Open",
+    "volunteers": ["1", "2"]
   },
   {
     "_id": "2",
@@ -15,6 +17,8 @@
     "skills": ["Organization", "communication", " follow instructions"],
     "requirements": "Ability to work in various weather conditions, comfortable with physical labor",
     "location": "Natural areas such as parks, forests, or riverbanks",
-    "time": "Weekends, 8am-5pm"
+    "time": "Weekends, 8am-5pm",
+    "status": "Open",
+    "volunteers": ["1", "2"]
   }
 ]
