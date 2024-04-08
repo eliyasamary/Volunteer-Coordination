@@ -5,9 +5,10 @@ import "./App.css";
 // import Navigation from "./Components/Navigation.jsx";
 // import Footer from "./Components/Footer.jsx";
 import AuthContex from "./AuthContex.jsx";
+import Login from "./Screens/Login.jsx";
 
 const App = () => {
-  return <AuthContex />;
+  return <Login />;
 };
 
 export default App;

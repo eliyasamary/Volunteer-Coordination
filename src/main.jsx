@@ -41,6 +41,11 @@ const router = createBrowserRouter([
         element: <ItemPage />,
         exact: true,
       },
+      // {
+      //   path: "/signup",
+      //   element: <NewItem />,
+      //   exact: true,
+      // },
     ],
   },
 ]);

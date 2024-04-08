@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { createItem } from "../HTTP/http";
+import Header from "../Components/Header.jsx";
+import Footer from "../Components/Footer.jsx";
 
 const NewItem = () => {
   const [data, setData] = useState({
@@ -53,50 +55,56 @@ const NewItem = () => {
   };
 
   return (
-    <Box className="content-box">
-      <h1 className="title">Sign-up</h1>
-      <form onSubmit={handleSubmit} className="flex-container-col">
-        <TextField
-          className="input-field"
-          label="Name"
-          name="name"
-          value={data.name}
-          onChange={handleInputChange}
-        />
-        <TextField
-          className="input-field"
-          label="Location"
-          name="location"
-          value={data.location}
-          onChange={handleInputChange}
-        />
-        <TextField
-          className="input-field"
-          label="Email"
-          name="email"
-          value={data.email}
-          onChange={handleInputChange}
-        />
-        <TextField
-          className="input-field"
-          label="Password"
-          name="password"
-          value={data.password}
-          onChange={handleInputChange}
-        />
-        {/* skills */}
-        <div className="btn-wrapper">
-          <Button type="submit" variant="contained" className="nav-btn">
-            Save
-          </Button>
-        </div>
-      </form>
-      {successMessage && (
-        <div>
-          <p className="successMessage">{successMessage}</p>
-        </div>
-      )}
-      {error && <p className="error-message">{error}</p>}
+    <Box className="root">
+      <Box className="container-primary">
+        <Header></Header>
+        <Box className="content-box">
+          <h1 className="title">Sign-up</h1>
+          <form onSubmit={handleSubmit} className="flex-container-col">
+            <TextField
+              className="input-field"
+              label="Name"
+              name="name"
+              value={data.name}
+              onChange={handleInputChange}
+            />
+            <TextField
+              className="input-field"
+              label="Location"
+              name="location"
+              value={data.location}
+              onChange={handleInputChange}
+            />
+            <TextField
+              className="input-field"
+              label="Email"
+              name="email"
+              value={data.email}
+              onChange={handleInputChange}
+            />
+            <TextField
+              className="input-field"
+              label="Password"
+              name="password"
+              value={data.password}
+              onChange={handleInputChange}
+            />
+            {/* skills */}
+            <div className="btn-wrapper">
+              <Button type="submit" variant="contained" className="nav-btn">
+                Save
+              </Button>
+            </div>
+          </form>
+          {successMessage && (
+            <div>
+              <p className="successMessage">{successMessage}</p>
+            </div>
+          )}
+          {error && <p className="error-message">{error}</p>}
+        </Box>
+        <Footer></Footer>
+      </Box>
     </Box>
   );
 };
