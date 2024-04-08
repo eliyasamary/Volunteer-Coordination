@@ -44,8 +44,11 @@
   font-weight: 400 !important;
   font-style: normal !important;
   font-variation-settings: "wdth" 100 !important;
+  color: white;
 }
-
+h2 {
+  text-align: center;
+}
 .title {
   font-family: "Libre Baskerville", serif;
   font-weight: 400;
@@ -118,7 +121,40 @@
   align-items: center;
   /* gap: 20px; */
 }
-
+#flex-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+p {
+  line-height: 38px;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  border-radius: 15px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  height: 500px;
+  width: 300px;
+  border-radius: 15px;
+}
+.pink {
+  background-color: #ba3b62;
+}
+.green {
+  background-color: #13aba6;
+}
+.orange {
+  background-color: #f37d21;
+}
+.card-items {
+  width: 80%;
+}
 .items-container {
   display: flex;
   flex-wrap: wrap;
@@ -198,7 +234,7 @@
   /* background-color: aqua; */
 }
 .detail-text {
-  width: 80%;
+  width: 100%;
 }
 
 .link-decoration {
