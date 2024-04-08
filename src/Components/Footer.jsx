@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <Box className="footer-component center-flex font-primary">
       {" "}
-      &copy; Eliya Samary, Asaf Zafrir, Inon Maman
+      &copy; Eliya Samary, Asaf Zafrir, Yinon Maman
     </Box>
   );
 };
