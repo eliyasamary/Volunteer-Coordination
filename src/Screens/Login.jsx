@@ -1,14 +1,22 @@
-const AuthContex = () => {
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+const Login = () => {
   return (
-    <Box className="root">
-      <Box className="container-primary">
-        <Header></Header>
-        <Navigation></Navigation>
-      </Box>
-      <Outlet />
-      <Footer></Footer>
-    </Box>
+    <>
+      <div>
+        <h1>Login</h1>
+        <TextField id="outlined-basic" label="Username" variant="outlined" />
+        <TextField
+          id="filled-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          variant="outlined"
+        />
+        <Button variant="contained">Submit</Button>
+      </div>
+    </>
   );
 };
 
-export default AuthContex;
+export default Login;
