@@ -54,7 +54,7 @@ const NewItem = () => {
 
   return (
     <Box className="content-box">
-      <h1 className="title">New Volunteer</h1>
+      <h1 className="title">Sign-up</h1>
       <form onSubmit={handleSubmit} className="flex-container-col">
         <TextField
           className="input-field"

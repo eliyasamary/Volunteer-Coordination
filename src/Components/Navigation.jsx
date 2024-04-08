@@ -9,7 +9,7 @@ const Navigation = () => {
       <Link to="/allItems">
         <Button className="nav-btn">Volunteering Tasks</Button>
       </Link>
-      <Link to="/newItem">
+      <Link to="/dashboard">
         <Button className="nav-btn">Dashboard</Button>
       </Link>
       <Link to="/findItem">

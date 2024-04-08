@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import AllItems from "./Screens/AllItems";
 import FindItem from "./Screens/FindItem";
-import NewItem from "./Screens/NewItem";
+// import NewItem from "./Screens/NewItem";
+import Dashboard from "./Screens/Dashboard";
 import ItemPage from "./Screens/ItemPage";
 // import ErrorNotFound from "./Components/ErrorNotFound404.jsx";
 import "./index.css";
@@ -31,8 +32,8 @@ const router = createBrowserRouter([
         exact: true,
       },
       {
-        path: "/newItem",
-        element: <NewItem />,
+        path: "/dashboard",
+        element: <Dashboard />,
         exact: true,
       },
       {
