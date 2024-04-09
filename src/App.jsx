@@ -4,15 +4,14 @@ import "./App.css";
 // import Header from "./Components/Header.jsx";
 // import Navigation from "./Components/Navigation.jsx";
 // import Footer from "./Components/Footer.jsx";
-import AuthContextProvider, { AuthContext } from "./store/auth-context";
-import { useContext } from "react";
+import AuthContextProvider from "./store/auth-context";
+// import { useContext } from "react";
 import AuthContex from "./AuthContex.jsx";
 import Router from "./Router.jsx";
 
 const App = () => {
-  const authCtx = useContext(AuthContext);
+  // const name = localStorage.getItem("name");
 
-  //window.localStorage.getItem("token");
   return (
     <>
       <AuthContextProvider>
