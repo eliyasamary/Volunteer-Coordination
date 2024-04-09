@@ -49,14 +49,14 @@ const signupUser = async (data) => {
 //   }
 // };
 
-// const createItem = async (data) => {
-//   try {
-//     const response = await http.post("/news", data);
-//     return response.data;
-//   } catch (error) {
-//     console.error("An error occurred while fetching data:", error);
-//   }
-// };
+const createItem = async (data) => {
+  try {
+    const response = await http.post("/news", data);
+    return response.data;
+  } catch (error) {
+    console.error("An error occurred while fetching data:", error);
+  }
+};
 
 // const updateItem = async (data) => {
 //   try {
@@ -77,4 +77,4 @@ const signupUser = async (data) => {
 //   }
 // };
 
-export { loginUser, signupUser };
+export { loginUser, signupUser, createItem };
