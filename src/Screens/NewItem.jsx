@@ -1,3 +1,5 @@
+// SIGN-UP
+
 import "../style/styles.css";
 import Box from "@mui/material/Box";
 import { useState, useEffect } from "react";
@@ -7,10 +9,11 @@ import { createItem } from "../HTTP/http";
 
 const NewItem = (props) => {
   const [data, setData] = useState({
-    title: "",
-    description: "",
-    text: "",
-    author: "",
+    name: "",
+    email: "",
+    password: "",
+    location: "",
+    skills: [],
   });
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
@@ -39,9 +42,11 @@ const NewItem = (props) => {
       .then(() => {
         setSuccessMessage("User created successfully !");
         setData({
-          donorName: "",
-          amount: "",
+          name: "",
+          email: "",
+          password: "",
           location: "",
+          skills: [],
         });
         setError("");
       })
