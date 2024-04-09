@@ -44,7 +44,7 @@
   font-weight: 400 !important;
   font-style: normal !important;
   font-variation-settings: "wdth" 100 !important;
-  color: white;
+  /* color: white; */
 }
 h2 {
   text-align: center;
@@ -145,14 +145,17 @@ p {
   width: 300px;
   border-radius: 15px;
 }
-.pink {
+.pink-container {
   background-color: #ba3b62;
+  color: white;
 }
-.green {
+.green-container {
   background-color: #13aba6;
+  color: white;
 }
-.orange {
+.orange-container {
   background-color: #f37d21;
+  color: white;
 }
 .card-items {
   width: 80%;
@@ -237,6 +240,7 @@ p {
 }
 .detail-text {
   width: 100%;
+  /* width: 80%; */
 }
 
 .link-decoration {
@@ -271,4 +275,12 @@ p {
   font-size: 24px;
   margin-top: 20px;
   color: #149b7f;
+}
+
+.logout {
+  margin-right: 20px;
+}
+
+.logout:hover {
+  opacity: 0.6;
 }
