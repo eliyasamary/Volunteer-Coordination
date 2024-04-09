@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
-import Header from "../Components/Header.jsx";
-import Footer from "../Components/Footer.jsx";
+// import Header from "../Components/Header.jsx";
+// import Footer from "../Components/Footer.jsx";
 import { loginUser } from "../HTTP/http.jsx";
 import "../style/styles.css";
 
@@ -27,7 +27,10 @@ const Login = (props) => {
       );
       window.localStorage.setItem("token", JSON.stringify(response.token));
       window.localStorage.setItem("id", JSON.stringify(response.data.user._id));
-      window.localStorage.setItem("name", JSON.stringify(response.data.user.name));
+      window.localStorage.setItem(
+        "name",
+        JSON.stringify(response.data.user.name)
+      );
       console.log(authCtx.token, authCtx.userId, authCtx.userName);
       window.location.href = "/";
     } catch (error) {
@@ -45,7 +48,6 @@ const Login = (props) => {
   return (
     <Box className="root">
       <Box className="container-primary">
-        <Header></Header>
         <Box className="content-box">
           <form className="flex-container-col">
             <h1 className="title">Login</h1>
@@ -73,22 +75,16 @@ const Login = (props) => {
               <Button
                 variant="contained"
                 className="nav-btn"
-                onClick={() => 
-                  loginHandler(email, password)
-                }
+                onClick={() => loginHandler(email, password)}
               >
                 Sign-in
               </Button>
             </div>
           </form>
-          {/* <Link to="/signup">Sign-Up</Link> */}
-          <Button
-            variant="contained"
-            className="nav-btn"
-            onClick={moveToSignUp}
-          ></Button>
+          <a className="font-primary sign-in-up-btn" onClick={moveToSignUp}>
+            Sign-Up
+          </a>
         </Box>
-        <Footer></Footer>
       </Box>
     </Box>
   );
