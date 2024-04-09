@@ -12,7 +12,7 @@ const Navigation = () => {
       <Link to="/dashboard">
         <Button className="nav-btn">Dashboard</Button>
       </Link>
-      <Link to="/findItem">
+      <Link to="/messages">
         <Button className="nav-btn">Messages</Button>
       </Link>
     </Box>
