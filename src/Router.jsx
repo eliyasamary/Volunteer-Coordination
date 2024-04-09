@@ -1,5 +1,5 @@
 import AllItems from "./Screens/AllItems";
-import FindItem from "./Screens/FindItem";
+import Messages from "./Screens/Messages";
 // import NewItem from "./Screens/NewItem";
 import Dashboard from "./Screens/Dashboard";
 import ItemPage from "./Screens/ItemPage";
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
         exact: true,
       },
       {
-        path: "/findItem",
-        element: <FindItem />,
+        path: "/messages",
+        element: <Messages />,
         exact: true,
       },
       {
@@ -49,9 +49,7 @@ const router = createBrowserRouter([
 ]);
 
 const Router = () => {
-  return (
-    <RouterProvider router={router} />
-  );
-}
+  return <RouterProvider router={router} />;
+};
 
 export default Router;
