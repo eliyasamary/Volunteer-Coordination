@@ -230,3 +230,9 @@
   align-items: center;
   margin-top: 24px;
 }
+
+.sign-in-up-btn {
+  font-size: 24px;
+  margin-top: 20px;
+  color: #149b7f;
+}
