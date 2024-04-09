@@ -4,10 +4,8 @@ import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { createItem } from "../HTTP/http";
-import Header from "../Components/Header.jsx";
-import Footer from "../Components/Footer.jsx";
 
-const NewItem = () => {
+const NewItem = (props) => {
   const [data, setData] = useState({
     title: "",
     description: "",
@@ -39,7 +37,7 @@ const NewItem = () => {
     event.preventDefault();
     createItem(data)
       .then(() => {
-        setSuccessMessage("Donation created successfully !");
+        setSuccessMessage("User created successfully !");
         setData({
           donorName: "",
           amount: "",
@@ -48,16 +46,20 @@ const NewItem = () => {
         setError("");
       })
       .catch((err) => {
-        console.error("Error creating donation:", err);
+        console.error("Error creating user:", err);
         setSuccessMessage("");
-        setError("Failed to create donation. Please try again.");
+        setError("Failed to sign up. Please try again.");
       });
+  };
+
+  const moveToSignIn = () => {
+    /* eslint-disable react/prop-types */
+    props.setSignUp(false);
   };
 
   return (
     <Box className="root">
       <Box className="container-primary">
-        <Header></Header>
         <Box className="content-box">
           <h1 className="title">Sign-up</h1>
           <form onSubmit={handleSubmit} className="flex-container-col">
@@ -92,7 +94,7 @@ const NewItem = () => {
             {/* skills */}
             <div className="btn-wrapper">
               <Button type="submit" variant="contained" className="nav-btn">
-                Save
+                Submit
               </Button>
             </div>
           </form>
@@ -102,8 +104,10 @@ const NewItem = () => {
             </div>
           )}
           {error && <p className="error-message">{error}</p>}
+          <a className="font-primary sign-in-up-btn" onClick={moveToSignIn}>
+            Sign-In
+          </a>
         </Box>
-        <Footer></Footer>
       </Box>
     </Box>
   );
