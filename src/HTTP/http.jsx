@@ -30,6 +30,18 @@ const signupUser = async (data) => {
   }
 };
 
+const getAllLocations = async () => {
+  try {
+    const response = await http.get("/api/v1/locations");
+    return response;
+  } catch (error) {
+    console.error(
+      "An error occurred while fetching data / all locations",
+      error
+    );
+  }
+};
+
 // Still not complete
 // const getAllItems = async () => {
 //   try {
@@ -77,4 +89,4 @@ const createItem = async (data) => {
 //   }
 // };
 
-export { loginUser, signupUser, createItem };
+export { loginUser, signupUser, createItem, getAllLocations };
