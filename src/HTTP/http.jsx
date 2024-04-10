@@ -61,14 +61,14 @@ const getAllLocations = async () => {
 //   }
 // };
 
-const createItem = async (data) => {
-  try {
-    const response = await http.post("/news", data);
-    return response.data;
-  } catch (error) {
-    console.error("An error occurred while fetching data:", error);
-  }
-};
+// const createItem = async (data) => {
+//   try {
+//     const response = await http.post("/news", data);
+//     return response.data;
+//   } catch (error) {
+//     console.error("An error occurred while fetching data:", error);
+//   }
+// };
 
 // const updateItem = async (data) => {
 //   try {
@@ -89,4 +89,4 @@ const createItem = async (data) => {
 //   }
 // };
 
-export { loginUser, signupUser, createItem, getAllLocations };
+export { loginUser, signupUser, getAllLocations };
