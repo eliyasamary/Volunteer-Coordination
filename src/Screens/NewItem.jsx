@@ -5,7 +5,10 @@ import Box from "@mui/material/Box";
 import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { createItem } from "../HTTP/http";
+// import { createItem } from "../HTTP/http";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import { getAllLocations, signupUser } from "../HTTP/http";
 
 const NewItem = (props) => {
   const [data, setData] = useState({
@@ -17,6 +20,29 @@ const NewItem = (props) => {
   });
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
+  const [locationsData, setLocationsData] = useState([]);
+
+  // const [skillsData, setSkillsData] = useState([]);
+  // const [locationsData, setLocationsData] = useState([]);
+  // const [location, setLocation] = useState("");
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      try {
+        const response = await getAllLocations();
+        setLocationsData(response.data);
+        // console.log("Locations:", response.data);
+      } catch (error) {
+        console.error("Error fetching locations:", error);
+      }
+    };
+
+    fetchLocations();
+  }, []);
+
+  // const handleLocationChange = (event) => {
+  //   setLocation(event.target.value);
+  // };
 
   useEffect(() => {
     if (successMessage) {
@@ -38,7 +64,7 @@ const NewItem = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createItem(data)
+    signupUser(data)
       .then(() => {
         setSuccessMessage("User created successfully !");
         setData({
@@ -97,6 +123,21 @@ const NewItem = (props) => {
               onChange={handleInputChange}
             />
             {/* skills */}
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={location}
+              x
+              label="Location"
+              className="input-field"
+              // onChange={handleLocationChange}
+            >
+              {locationsData.data.map((item) => (
+                <MenuItem key={item._id} value={item._id}>
+                  {item.location}
+                </MenuItem>
+              ))}
+            </Select>
             <div className="btn-wrapper">
               <Button type="submit" variant="contained" className="nav-btn">
                 Submit
