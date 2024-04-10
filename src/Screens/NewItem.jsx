@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 // import { createItem } from "../HTTP/http";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { getAllLocations, signupUser } from "../HTTP/http";
@@ -31,7 +33,6 @@ const NewItem = (props) => {
       try {
         const response = await getAllLocations();
         setLocationsData(response.data);
-        // console.log("Locations:", response.data);
       } catch (error) {
         console.error("Error fetching locations:", error);
       }
@@ -122,22 +123,24 @@ const NewItem = (props) => {
               value={data.password}
               onChange={handleInputChange}
             />
-            {/* skills */}
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={location}
-              x
-              label="Location"
-              className="input-field"
-              // onChange={handleLocationChange}
-            >
-              {locationsData.data.map((item) => (
-                <MenuItem key={item._id} value={item._id}>
-                  {item.location}
-                </MenuItem>
-              ))}
-            </Select>
+            <FormControl fullWidth>
+              {/* skills */}
+              <InputLabel id="demo-simple-select-label">Location</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={data.location}
+                label="location"
+                className="input-field"
+                onChange={handleInputChange}
+              >
+                {locationsData?.map((item) => (
+                  <MenuItem key={item._id} value={item.location}>
+                    {item.location}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
             <div className="btn-wrapper">
               <Button type="submit" variant="contained" className="nav-btn">
                 Submit
