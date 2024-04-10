@@ -42,6 +42,15 @@ const getAllLocations = async () => {
   }
 };
 
+const getAllSkills = async () => {
+  try {
+    const response = await http.get("/api/v1/skills");
+    return response;
+  } catch (error) {
+    console.error("An error occurred while fetching data / all skills", error);
+  }
+};
+
 // Still not complete
 // const getAllItems = async () => {
 //   try {
@@ -89,4 +98,4 @@ const getAllLocations = async () => {
 //   }
 // };
 
-export { loginUser, signupUser, getAllLocations };
+export { loginUser, signupUser, getAllLocations, getAllSkills };
