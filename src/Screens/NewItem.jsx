@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-// import { createItem } from "../HTTP/http";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
@@ -22,16 +21,17 @@ const NewItem = (props) => {
   });
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
+
   const [locationsData, setLocationsData] = useState([]);
 
   // const [skillsData, setSkillsData] = useState([]);
-  // const [locationsData, setLocationsData] = useState([]);
-  // const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("");
 
   useEffect(() => {
     const fetchLocations = async () => {
       try {
         const response = await getAllLocations();
+        console.log("Locations data:", response.data);
         setLocationsData(response.data);
       } catch (error) {
         console.error("Error fetching locations:", error);
@@ -41,9 +41,9 @@ const NewItem = (props) => {
     fetchLocations();
   }, []);
 
-  // const handleLocationChange = (event) => {
-  //   setLocation(event.target.value);
-  // };
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  };
 
   useEffect(() => {
     if (successMessage) {
@@ -72,7 +72,7 @@ const NewItem = (props) => {
           name: "",
           email: "",
           password: "",
-          location: "",
+          location: location,
           skills: [],
         });
         setError("");
@@ -129,10 +129,10 @@ const NewItem = (props) => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={data.location}
+                value={location}
                 label="location"
                 className="input-field"
-                onChange={handleInputChange}
+                onChange={handleLocationChange}
               >
                 {locationsData?.map((item) => (
                   <MenuItem key={item._id} value={item.location}>
