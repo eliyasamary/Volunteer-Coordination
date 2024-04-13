@@ -1,37 +1,43 @@
 import "../style/styles.css";
 import Box from "@mui/material/Box";
-// import React from "react";
-// import { getAllItems } from "../HTTP/http";
-import DummyVolunteeringTasks from "../DummyData/DummyVolunteeringTasks.json";
+import { useEffect, useState } from "react";
+import { getAllTasks } from "../HTTP/http";
 import { Link } from "react-router-dom";
-// import ClipLoader from "react-spinners/ClipLoader";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const AllItems = () => {
-  // const [items, setItems] = React.useState([]);
-  // const [loading, setLoading] = React.useState(true);
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // React.useEffect(() => {
-  //   getAllItems()
-  //     .then((data) => {
-  //       setItems(data);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setLoading(false);
-  //     });
-  // }, []);
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        setLoading(true);
+        const response = await getAllTasks();
+        setItems(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+        setLoading(false);
+      }
+    };
 
-  // if (loading) {
-  //   return <ClipLoader color="#3a3630" />;
-  // }
+    fetchTasks();
+  }, []);
+
+  if (loading) {
+    return (
+      <Box className="loading">
+        <CircularProgress color="inherit" />
+      </Box>
+    );
+  }
 
   return (
     <Box className="content-box">
       <h1 className="title">Volunteer Tasks</h1>
       <Box className="items-container">
-        {/* {items.map((item) => ( */}
-        {DummyVolunteeringTasks.map((item) => (
+        {items.map((item) => (
           <Link
             to={`/ItemPage/${item._id}`}
             key={item._id}
