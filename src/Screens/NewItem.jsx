@@ -9,78 +9,132 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import { getAllLocations, signupUser } from "../HTTP/http";
+import { getAllLocations, signupUser, getAllSkills } from "../HTTP/http";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import FormLabel from "@mui/material/FormLabel";
+import CircularProgress from "@mui/material/CircularProgress";
+// import Modal from "@mui/material/Modal";
+// import Typography from "@mui/material/Typography";
+
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   border: "2px solid #000",
+//   boxShadow: 24,
+//   p: 4,
+// };
 
 const NewItem = (props) => {
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
+    passwordConfirm: "",
     location: "",
     skills: [],
   });
-  const [successMessage, setSuccessMessage] = useState("");
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [locationsData, setLocationsData] = useState([]);
+  const [skillsData, setSkillsData] = useState([]);
 
-  // const [skillsData, setSkillsData] = useState([]);
   const [location, setLocation] = useState("");
+  const [skills, setSkills] = useState("");
 
   useEffect(() => {
     const fetchLocations = async () => {
       try {
+        setLoading(true);
         const response = await getAllLocations();
-        console.log("Locations data:", response.data);
         setLocationsData(response.data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching locations:", error);
+        setLoading(false);
       }
     };
 
     fetchLocations();
   }, []);
 
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        setLoading(true);
+        const response = await getAllSkills();
+        // console.log("Siklls data:", response.data);
+        setSkillsData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching skills:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchSkills();
+  }, []);
+
   const handleLocationChange = (event) => {
-    setLocation(event.target.value);
+    // setLocation(event.target.value);
+
+    const newLocation = event.target.value;
+    console.log("New Location:", newLocation);
+
+    setLocation(newLocation);
   };
 
-  useEffect(() => {
-    if (successMessage) {
-      const timeout = setTimeout(() => {
-        setSuccessMessage("");
-      }, 3000);
-
-      return () => clearTimeout(timeout);
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    if (checked) {
+      console.log("Adding Skill:", name);
+      setSkills((prevSkills) => [...prevSkills, name]);
+    } else {
+      console.log("Removing Skill:", name);
+      setSkills((prevSkills) => prevSkills.filter((skill) => skill !== name));
     }
-  }, [successMessage]);
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+    console.log("Input Change:", name, value);
+
     setData({
       ...data,
       [name]: value,
+      ["location"]: location,
+      ["skills"]: skills,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("Data:", data);
+    console.log("loction - :", location);
+    console.log("skills - :", skills);
     signupUser(data)
       .then(() => {
-        setSuccessMessage("User created successfully !");
         setData({
           name: "",
           email: "",
           password: "",
-          location: location,
+          passwordConfirm: "",
+          location: "",
           skills: [],
         });
-        setError("");
+        // setError("");
+        // displayMessage();
+        // moveToSignIn();
       })
       .catch((err) => {
         console.error("Error creating user:", err);
-        setSuccessMessage("");
-        setError("Failed to sign up. Please try again.");
+        // setError("Failed to sign up. Please try again.");
       });
   };
 
@@ -89,77 +143,119 @@ const NewItem = (props) => {
     props.setSignUp(false);
   };
 
-  return (
-    <Box className="root">
-      <Box className="container-primary">
-        <Box className="content-box">
-          <h1 className="title">Sign-up</h1>
-          <form onSubmit={handleSubmit} className="flex-container-col">
-            <TextField
-              className="input-field"
-              label="Name"
-              name="name"
-              value={data.name}
-              onChange={handleInputChange}
-            />
-            <TextField
-              className="input-field"
-              label="Location"
-              name="location"
-              value={data.location}
-              onChange={handleInputChange}
-            />
-            <TextField
-              className="input-field"
-              label="Email"
-              name="email"
-              value={data.email}
-              onChange={handleInputChange}
-            />
-            <TextField
-              className="input-field"
-              label="Password"
-              name="password"
-              value={data.password}
-              onChange={handleInputChange}
-            />
-            <FormControl fullWidth>
-              {/* skills */}
-              <InputLabel id="demo-simple-select-label">Location</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={location}
-                label="location"
-                className="input-field"
-                onChange={handleLocationChange}
-              >
-                {locationsData?.map((item) => (
-                  <MenuItem key={item._id} value={item.location}>
-                    {item.location}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <div className="btn-wrapper">
-              <Button type="submit" variant="contained" className="nav-btn">
-                Submit
-              </Button>
-            </div>
-          </form>
-          {successMessage && (
-            <div>
-              <p className="successMessage">{successMessage}</p>
-            </div>
-          )}
-          {error && <p className="error-message">{error}</p>}
-          <a className="font-primary sign-in-up-btn" onClick={moveToSignIn}>
-            Sign-In
-          </a>
-        </Box>
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
+
+  if (loading) {
+    return (
+      <Box className="loading">
+        <CircularProgress color="inherit" />
       </Box>
-    </Box>
-  );
+    );
+  } else
+    return (
+      <Box className="root">
+        <Box className="container-primary">
+          <Box className="content-box">
+            <h1 className="title">Sign-up</h1>
+            <form
+              onSubmit={handleSubmit}
+              className="flex-container-col signup-form"
+            >
+              <TextField
+                className="input-field"
+                label="Name"
+                name="name"
+                value={data.name}
+                onChange={handleInputChange}
+              />
+              <TextField
+                className="input-field"
+                label="Email"
+                name="email"
+                value={data.email}
+                onChange={handleInputChange}
+              />
+              <TextField
+                className="input-field"
+                label="Password"
+                name="password"
+                value={data.password}
+                onChange={handleInputChange}
+              />
+              <TextField
+                className="input-field"
+                label="Password Confirm"
+                name="passwordConfirm"
+                value={data.passwordConfirm}
+                onChange={handleInputChange}
+              />
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Location</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={location}
+                  label="location"
+                  className="input-field"
+                  onChange={handleLocationChange}
+                >
+                  {locationsData?.map((item) => (
+                    <MenuItem key={item._id} value={item.location}>
+                      {item.location}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormGroup className="checkbox-container">
+                <FormLabel component="legend">Skills</FormLabel>
+                {skillsData?.map((item) => (
+                  <FormControlLabel
+                    className="checkbox-input"
+                    key={item._id}
+                    value={item.name}
+                    control={
+                      <Checkbox
+                        checked={skills.includes(item.name)}
+                        onChange={handleCheckboxChange}
+                        name={item.name}
+                      />
+                    }
+                    label={item.name}
+                  />
+                ))}
+              </FormGroup>
+              <div className="btn-wrapper">
+                <Button type="submit" variant="contained" className="nav-btn">
+                  Submit
+                </Button>
+              </div>
+            </form>
+            <a className="font-primary sign-in-up-btn" onClick={moveToSignIn}>
+              Sign-In
+            </a>
+          </Box>
+        </Box>
+        {/* {isModalOpen && (
+          <Modal
+            open={open}
+            onClose={closeModal}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                Registration successfully completed!
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                Please login to continue
+              </Typography>
+            </Box>
+          </Modal>
+        )} */}
+      </Box>
+    );
 };
 
 export default NewItem;
