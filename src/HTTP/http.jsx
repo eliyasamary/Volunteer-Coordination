@@ -60,6 +60,18 @@ const getAllTasks = async () => {
   }
 };
 
+const getTask = async (id) => {
+  try {
+    const response = await http.get("/api/v1/volunteer-tasks/" + id);
+    return response;
+  } catch (error) {
+    console.error(
+      "An error occurred while fetching data / get task " + id,
+      error
+    );
+  }
+};
+
 // Still not complete
 // const getAllItems = async () => {
 //   try {
@@ -107,4 +119,11 @@ const getAllTasks = async () => {
 //   }
 // };
 
-export { loginUser, signupUser, getAllLocations, getAllSkills, getAllTasks };
+export {
+  loginUser,
+  signupUser,
+  getAllLocations,
+  getAllSkills,
+  getAllTasks,
+  getTask,
+};
