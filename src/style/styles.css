@@ -260,8 +260,20 @@ p {
   font-size: 32px !important;
   background-color: #149b7f !important;
   border-radius: 10px !important;
+}
 
-  /* color: #000 !important; */
+.btn-secondary {
+  width: 150px;
+  height: 40px;
+  margin: 10px !important;
+  font-size: 30px !important;
+  background-color: #149b7f !important;
+  border-radius: 10px !important;
+}
+
+.btn:hover {
+  opacity: 0.8;
+  color: #fff !important;
 }
 
 .btn-wrapper {
