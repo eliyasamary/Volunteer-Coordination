@@ -3,13 +3,15 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { getTask } from "../HTTP/http";
+import { getTask, updateUser, getUser } from "../HTTP/http";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const ItemPage = () => {
   const [item, setItem] = useState();
   const [loading, setLoading] = useState(true);
   const { itemId } = useParams();
+  const [user, setUser] = useState();
+  const userId = JSON.parse(localStorage.getItem("id"));
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -24,8 +26,33 @@ const ItemPage = () => {
       }
     };
 
+    const fetchUser = async () => {
+      try {
+        setLoading(true);
+        const response = await getUser(userId);
+        setUser(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching user " + userId, error);
+        setLoading(false);
+      }
+    };
+
     fetchTask();
-  }, [itemId]);
+    fetchUser();
+  }, [itemId, userId]);
+
+  const handleSignup = async () => {
+    try {
+      const updatedUser = { ...user, tasks: [...user.tasks, itemId] };
+      const response = await updateUser(userId, updatedUser);
+      console.log("User updated:", response.data);
+      alert("Successfully signed up for the volunteering task!");
+    } catch (error) {
+      console.error("Error updating user tasks:", error);
+      alert("Failed to sign up for the volunteering task. Please try again.");
+    }
+  };
 
   if (loading) {
     return (
@@ -79,8 +106,19 @@ const ItemPage = () => {
           </Box>
         </Box>
       </Box>
-      <Button variant="contained" className="btn-primary font-primary">
+      <Button
+        variant="contained"
+        className="btn-primary font-primary btn"
+        onClick={handleSignup}
+      >
         I want to sign up for this volunteering task
+      </Button>
+      <Button
+        variant="contained"
+        className="btn-secondary font-primary btn"
+        href="/allItems"
+      >
+        Go Back
       </Button>
     </Box>
   );
