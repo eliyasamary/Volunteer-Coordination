@@ -30,6 +30,27 @@ const signupUser = async (data) => {
   }
 };
 
+const updateUser = async (id, data) => {
+  try {
+    const response = await http.patch("/api/v1/volunteer-persons/" + id, data);
+    return response.data;
+  } catch (error) {
+    console.error("An error occurred while fetching data / update user", error);
+  }
+};
+
+const getUser = async (id) => {
+  try {
+    const response = await http.get("/api/v1/volunteer-persons/" + id);
+    return response;
+  } catch (error) {
+    console.error(
+      "An error occurred while fetching data / get user " + id,
+      error
+    );
+  }
+};
+
 const getAllLocations = async () => {
   try {
     const response = await http.get("/api/v1/locations");
@@ -126,4 +147,6 @@ export {
   getAllSkills,
   getAllTasks,
   getTask,
+  updateUser,
+  getUser,
 };
