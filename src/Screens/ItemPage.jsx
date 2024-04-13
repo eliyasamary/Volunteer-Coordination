@@ -1,5 +1,5 @@
 import "../style/styles.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -7,10 +7,10 @@ import { getTask, updateUser, getUser } from "../HTTP/http";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const ItemPage = () => {
-  const [item, setItem] = useState();
+  const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const { itemId } = useParams();
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const userId = JSON.parse(localStorage.getItem("id"));
 
   useEffect(() => {
@@ -44,17 +44,24 @@ const ItemPage = () => {
 
   const handleSignup = async () => {
     try {
+      if (!user || !user.tasks || user.tasks.includes(itemId)) {
+        alert("You have already signed up for this volunteering task!");
+        return;
+      }
+
       const updatedUser = { ...user, tasks: [...user.tasks, itemId] };
       const response = await updateUser(userId, updatedUser);
+
       console.log("User updated:", response.data);
       alert("Successfully signed up for the volunteering task!");
+      window.location.href = "/allItems";
     } catch (error) {
       console.error("Error updating user tasks:", error);
       alert("Failed to sign up for the volunteering task. Please try again.");
     }
   };
 
-  if (loading) {
+  if (loading || !item || !user) {
     return (
       <Box className="loading">
         <CircularProgress color="inherit" />
@@ -116,7 +123,8 @@ const ItemPage = () => {
       <Button
         variant="contained"
         className="btn-secondary font-primary btn"
-        href="/allItems"
+        component={Link}
+        to="/allItems"
       >
         Go Back
       </Button>
