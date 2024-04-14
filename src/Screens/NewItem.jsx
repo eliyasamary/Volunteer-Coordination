@@ -46,7 +46,7 @@ const NewItem = (props) => {
   const [skillsData, setSkillsData] = useState([]);
 
   const [location, setLocation] = useState("");
-  const [skills, setSkills] = useState("");
+  const [skills, setSkills] = useState([]);
 
   useEffect(() => {
     const fetchLocations = async () => {
@@ -88,6 +88,7 @@ const NewItem = (props) => {
     console.log("New Location:", newLocation);
 
     setLocation(newLocation);
+    setData({ ...data, ["location"]: newLocation });
   };
 
   const handleCheckboxChange = (event) => {
@@ -95,9 +96,11 @@ const NewItem = (props) => {
     if (checked) {
       console.log("Adding Skill:", name);
       setSkills((prevSkills) => [...prevSkills, name]);
+      setData({ ...data, ["skills"]: skills });
     } else {
       console.log("Removing Skill:", name);
       setSkills((prevSkills) => prevSkills.filter((skill) => skill !== name));
+      setData({ ...data, ["skills"]: skills });
     }
   };
 
@@ -113,29 +116,30 @@ const NewItem = (props) => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Data:", data);
+
+    console.log("Data1:", data);
     console.log("loction - :", location);
     console.log("skills - :", skills);
-    signupUser(data)
-      .then(() => {
-        setData({
-          name: "",
-          email: "",
-          password: "",
-          passwordConfirm: "",
-          location: "",
-          skills: [],
-        });
-        // setError("");
-        // displayMessage();
-        // moveToSignIn();
-      })
-      .catch((err) => {
-        console.error("Error creating user:", err);
-        // setError("Failed to sign up. Please try again.");
+    try {
+
+      await signupUser(data);
+      setData({
+        name: "",
+        email: "",
+        password: "",
+        passwordConfirm: "",
+        location: "",
+        skills: [],
       });
+    } catch (err) {
+      // setError("");
+      // displayMessage();
+      // moveToSignIn();
+      console.error("Error creating user:", err);
+      // setError("Failed to sign up. Please try again.");
+    }
   };
 
   const moveToSignIn = () => {
@@ -181,6 +185,7 @@ const NewItem = (props) => {
                 className="input-field"
                 label="Password"
                 name="password"
+                type="password"
                 value={data.password}
                 onChange={handleInputChange}
               />
@@ -188,6 +193,7 @@ const NewItem = (props) => {
                 className="input-field"
                 label="Password Confirm"
                 name="passwordConfirm"
+                type="password"
                 value={data.passwordConfirm}
                 onChange={handleInputChange}
               />
