@@ -61,6 +61,30 @@ const ItemPage = () => {
     }
   };
 
+  const handleFinishTask = async () => {
+    try {
+      if (!user || !user.tasks || !user.tasks.includes(itemId)) {
+        alert("You are not signed for this volunteering task!");
+        return;
+      }
+
+      const updatedUser = {
+        ...user,
+        tasks: user.tasks.filter((task) => task !== itemId),
+        completedTasks: [...user.completedTasks, itemId],
+      };
+
+      const response = await updateUser(userId, updatedUser);
+
+      console.log("User updated:", response.data);
+      alert("Successfully finished the volunteering task!");
+      window.location.href = "/allItems";
+    } catch (error) {
+      console.error("Error updating user tasks:", error);
+      alert("Failed to finish the volunteering task. Please try again.");
+    }
+  };
+
   if (loading || !item || !user) {
     return (
       <Box className="loading">
@@ -113,13 +137,23 @@ const ItemPage = () => {
           </Box>
         </Box>
       </Box>
-      <Button
-        variant="contained"
-        className="btn-primary font-primary btn"
-        onClick={handleSignup}
-      >
-        I want to sign up for this volunteering task
-      </Button>
+      {user.tasks && user.tasks.includes(itemId) ? (
+        <Button
+          variant="contained"
+          className="btn-primary font-primary btn"
+          onClick={handleFinishTask}
+        >
+          I finished the task
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          className="btn-primary font-primary btn"
+          onClick={handleSignup}
+        >
+          I want to sign up for this volunteering task
+        </Button>
+      )}
       <Button
         variant="contained"
         className="btn-secondary font-primary btn"
