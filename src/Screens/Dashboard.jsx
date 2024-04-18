@@ -7,13 +7,19 @@ import { getAllTasks } from "../HTTP/http";
 const Dashboard = () => {
   const [myTasks, setMyTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const userId = JSON.parse(localStorage.getItem("id"));
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         setLoading(true);
         const response = await getAllTasks();
-        setMyTasks(response.data);
+        console.log("response", response);
+        const filteredTasks = response.data.filter((task) =>
+          task.volunteers.includes(userId.toString())
+        );
+
+        setMyTasks(filteredTasks);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -22,7 +28,7 @@ const Dashboard = () => {
     };
 
     fetchTasks();
-  }, []);
+  }, [userId]);
 
   if (loading) {
     return (
