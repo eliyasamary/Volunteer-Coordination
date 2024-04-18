@@ -11,8 +11,9 @@ const Header = () => {
     setLoading(true);
     console.log("Logging out");
     localStorage.removeItem("token");
-    window.location.reload();
-    setLoading(false);
+    window.location.reload(() => {
+      setLoading(false);
+    });
   };
   if (loading) {
     return (
@@ -25,7 +26,7 @@ const Header = () => {
       <Box className="header-component center-flex">
         <div className="container-flex">
           <h1 className="header-title">Volunteer Coordination</h1>
-          <img src={logo} alt="Logo" width={"60%"} />
+          <img id="logo" src={logo} alt="Logo" width={"60%"} />
         </div>
         {localStorage.getItem("token") && (
           <Box className="container-flex logout">
