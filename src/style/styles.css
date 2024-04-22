@@ -115,7 +115,7 @@ h2 {
 #flex-cards {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 30px;
 }
 p {
@@ -130,7 +130,7 @@ p {
   flex-direction: column;
   align-items: center;
   background-color: white;
-  height: 700px;
+  min-height: 700px;
   width: 500px;
   border-radius: 15px;
   /* box-shadow: 2px 2px 5px rgb(133, 133, 133); */
@@ -343,5 +343,36 @@ p {
   }
   .header-title {
     width: 100%;
+  }
+  /* .nav-btn {
+    width: 125px;
+    font-size: 24px !important;
+  } */
+}
+
+@media only screen and (max-width: 750px) {
+  .nav-btn {
+    width: 125px;
+    font-size: 27px !important;
+    background-color: #3a3630 !important;
+  }
+  .nav-component {
+    gap: 25px;
+  }
+  .item-box {
+    margin: 15px;
+  }
+  .card {
+    margin: 15px;
+  }
+  .detail-box {
+    /* max-width: 100%; */
+    width: 600px;
+    min-height: 100px;
+    height: inherit;
+    /* margin: 15px; */
+  }
+  .detail-title {
+    width: 28%;
   }
 }
