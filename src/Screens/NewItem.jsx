@@ -75,13 +75,22 @@ const NewItem = (props) => {
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
     if (checked) {
-      console.log("Adding Skill:", name);
-      setSkills((prevSkills) => [...prevSkills, name]);
-      setData({ ...data, ["skills"]: skills });
+      setSkills((prevSkills) => {
+        const updatedSkills = [...prevSkills, name];
+        console.log("Skills:", updatedSkills);
+        return updatedSkills;
+      });
+      setData((prevData) => ({ ...prevData, skills: [...skills, name] }));
     } else {
-      console.log("Removing Skill:", name);
-      setSkills((prevSkills) => prevSkills.filter((skill) => skill !== name));
-      setData({ ...data, ["skills"]: skills });
+      setSkills((prevSkills) => {
+        const updatedSkills = prevSkills.filter((skill) => skill !== name);
+        console.log("Skills:", updatedSkills);
+        return updatedSkills;
+      });
+      setData((prevData) => ({
+        ...prevData,
+        skills: skills.filter((skill) => skill !== name),
+      }));
     }
   };
 
