@@ -78,7 +78,7 @@ const ItemPage = () => {
 
       console.log("User updated:", response.data);
       alert("Successfully finished the volunteering task!");
-      window.location.href = "/allItems";
+      window.location.href = "/dashboard";
     } catch (error) {
       console.error("Error updating user tasks:", error);
       alert("Failed to finish the volunteering task. Please try again.");
@@ -138,30 +138,46 @@ const ItemPage = () => {
         </Box>
       </Box>
       {user.tasks && user.tasks.includes(itemId) ? (
-        <Button
-          variant="contained"
-          className="btn-primary font-primary btn"
-          onClick={handleFinishTask}
-        >
-          I finished the task
-        </Button>
+        <>
+          <Button
+            type="button"
+            variant="contained"
+            className="btn-primary font-primary btn"
+            onClick={handleFinishTask}
+          >
+            I finished the task
+          </Button>
+          <Button
+            type="button"
+            variant="contained"
+            className="btn-secondary font-primary btn"
+            component={Link}
+            to="/dashboard"
+          >
+            Go Back
+          </Button>
+        </>
       ) : (
-        <Button
-          variant="contained"
-          className="btn-primary font-primary btn"
-          onClick={handleSignup}
-        >
-          I want to sign up for this volunteering task
-        </Button>
+        <>
+          <Button
+            type="button"
+            variant="contained"
+            className="btn-primary font-primary btn"
+            onClick={handleSignup}
+          >
+            I want to sign up for this volunteering task
+          </Button>
+          <Button
+            type="button"
+            variant="contained"
+            className="btn-secondary font-primary btn"
+            component={Link}
+            to="/allItems"
+          >
+            Go Back
+          </Button>
+        </>
       )}
-      <Button
-        variant="contained"
-        className="btn-secondary font-primary btn"
-        component={Link}
-        to="/allItems"
-      >
-        Go Back
-      </Button>
     </Box>
   );
 };
