@@ -7,7 +7,7 @@ const Navigation = () => {
   return (
     <Box className="nav-component center-flex">
       <Link to="/allItems">
-        <Button className="nav-btn">Volunteering Tasks</Button>
+        <Button className="nav-btn">Tasks</Button>
       </Link>
       <Link to="/dashboard">
         <Button className="nav-btn">Dashboard</Button>
