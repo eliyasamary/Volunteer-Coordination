@@ -133,6 +133,7 @@ p {
   min-height: 700px;
   width: 350px;
   border-radius: 15px;
+  margin-bottom: 20px;
   /* box-shadow: 2px 2px 5px rgb(133, 133, 133); */
 }
 .card-title {
