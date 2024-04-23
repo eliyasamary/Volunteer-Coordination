@@ -2,7 +2,7 @@ import "../style/styles.css";
 import { useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import { getAllTasks } from "../HTTP/http";
+import { getAllTasks, getRecommendations } from "../HTTP/http";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
@@ -11,6 +11,8 @@ const Dashboard = () => {
   // const [fetchCount, setFetchCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const userId = JSON.parse(localStorage.getItem("id"));
+
+  const [recommendationsTasks, setRecommendationsTasks] = useState([]);
 
   // const handleFetch = () => {
   //   setFetchCount((prevCount) => prevCount + 1);
@@ -26,6 +28,10 @@ const Dashboard = () => {
         );
         // console.log("Filtered tasks:", filteredTasks);
         setMyTasks(filteredTasks);
+
+        const response2 = await getRecommendations(userId);
+        setRecommendationsTasks(response2);
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -77,7 +83,17 @@ const Dashboard = () => {
         <div className="card">
           <h2 className="font-primary card-title">Suggested Tasks</h2>
           <div className="card-items">
-            <p className="detail-text orange-container">hghghg</p>
+            {recommendationsTasks.map((item) => (
+              <Link
+                to={`ItemPage/${item._id}`}
+                key={item._id}
+                className="link-decoration"
+              >
+                <p key={item._id} className="detail-text orange-container">
+                  {item.title}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

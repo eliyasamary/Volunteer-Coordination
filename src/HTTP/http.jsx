@@ -102,6 +102,20 @@ const getTask = async (id) => {
   }
 };
 
+const getRecommendations = async (id) => {
+  try {
+    const response = await http.get(
+      "api/v1/volunteer-tasks/recommendations/" + id
+    );
+    return response.data;
+  } catch (error) {
+    console.error(
+      "An error occurred while fetching data / get task recs" + id,
+      error
+    );
+  }
+};
+
 export {
   loginUser,
   signupUser,
@@ -112,4 +126,5 @@ export {
   updateUser,
   updateTask,
   getUser,
+  getRecommendations
 };
