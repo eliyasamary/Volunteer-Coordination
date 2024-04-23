@@ -12,6 +12,8 @@ const Header = () => {
     setLoading(true);
 
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("id");
     window.location.href = "/";
   };
 
