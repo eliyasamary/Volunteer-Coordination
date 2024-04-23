@@ -35,7 +35,7 @@ const AllItems = () => {
 
   return (
     <Box className="content-box">
-      <h1 className="title">Volunteer Tasks</h1>
+      <h1 className="title">Volunteering Tasks</h1>
       <Box className="items-container">
         {items.map((item) => (
           <Link

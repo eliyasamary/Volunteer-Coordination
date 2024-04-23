@@ -15,20 +15,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import FormLabel from "@mui/material/FormLabel";
 import CircularProgress from "@mui/material/CircularProgress";
-// import Modal from "@mui/material/Modal";
-// import Typography from "@mui/material/Typography";
-
-// const style = {
-//   position: "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 400,
-//   bgcolor: "background.paper",
-//   border: "2px solid #000",
-//   boxShadow: 24,
-//   p: 4,
-// };
 
 const NewItem = (props) => {
   const [data, setData] = useState({
@@ -40,8 +26,6 @@ const NewItem = (props) => {
     skills: [],
   });
   const [loading, setLoading] = useState(false);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [locationsData, setLocationsData] = useState([]);
   const [skillsData, setSkillsData] = useState([]);
 
@@ -69,7 +53,6 @@ const NewItem = (props) => {
       try {
         setLoading(true);
         const response = await getAllSkills();
-        // console.log("Siklls data:", response.data);
         setSkillsData(response.data);
         setLoading(false);
       } catch (error) {
@@ -82,8 +65,6 @@ const NewItem = (props) => {
   }, []);
 
   const handleLocationChange = (event) => {
-    // setLocation(event.target.value);
-
     const newLocation = event.target.value;
     console.log("New Location:", newLocation);
 
@@ -94,13 +75,22 @@ const NewItem = (props) => {
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
     if (checked) {
-      console.log("Adding Skill:", name);
-      setSkills((prevSkills) => [...prevSkills, name]);
-      setData({ ...data, ["skills"]: skills });
+      setSkills((prevSkills) => {
+        const updatedSkills = [...prevSkills, name];
+        console.log("Skills:", updatedSkills);
+        return updatedSkills;
+      });
+      setData((prevData) => ({ ...prevData, skills: [...skills, name] }));
     } else {
-      console.log("Removing Skill:", name);
-      setSkills((prevSkills) => prevSkills.filter((skill) => skill !== name));
-      setData({ ...data, ["skills"]: skills });
+      setSkills((prevSkills) => {
+        const updatedSkills = prevSkills.filter((skill) => skill !== name);
+        console.log("Skills:", updatedSkills);
+        return updatedSkills;
+      });
+      setData((prevData) => ({
+        ...prevData,
+        skills: skills.filter((skill) => skill !== name),
+      }));
     }
   };
 
@@ -118,13 +108,12 @@ const NewItem = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    console.log("Data1:", data);
-    console.log("loction - :", location);
-    console.log("skills - :", skills);
     try {
-
-      await signupUser(data);
+      const response = await signupUser(data);
+      if (response.status === "success") {
+        alert("Successfully signed up!");
+        moveToSignIn();
+      }
       setData({
         name: "",
         email: "",
@@ -134,11 +123,7 @@ const NewItem = (props) => {
         skills: [],
       });
     } catch (err) {
-      // setError("");
-      // displayMessage();
-      // moveToSignIn();
-      console.error("Error creating user:", err);
-      // setError("Failed to sign up. Please try again.");
+      console.error("Failed to sign up. Please try again.", err);
     }
   };
 
@@ -146,10 +131,6 @@ const NewItem = (props) => {
     /* eslint-disable react/prop-types */
     props.setSignUp(false);
   };
-
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
 
   if (loading) {
     return (
@@ -164,7 +145,7 @@ const NewItem = (props) => {
           <Box className="content-box">
             <h1 className="title">Sign-up</h1>
             <form
-              onSubmit={handleSubmit}
+              // onSubmit={handleSubmit}
               className="flex-container-col signup-form"
             >
               <TextField
@@ -233,7 +214,12 @@ const NewItem = (props) => {
                 ))}
               </FormGroup>
               <div className="btn-wrapper">
-                <Button type="submit" variant="contained" className="nav-btn">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  className="nav-btn"
+                  onClick={handleSubmit}
+                >
                   Submit
                 </Button>
               </div>
@@ -243,23 +229,6 @@ const NewItem = (props) => {
             </a>
           </Box>
         </Box>
-        {/* {isModalOpen && (
-          <Modal
-            open={open}
-            onClose={closeModal}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Registration successfully completed!
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Please login to continue
-              </Typography>
-            </Box>
-          </Modal>
-        )} */}
       </Box>
     );
 };
