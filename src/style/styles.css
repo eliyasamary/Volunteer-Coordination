@@ -314,7 +314,50 @@ p {
   flex: 0 0 calc(33.333% - 20px);
   margin: 10px;
 }
-
+#messages {
+  height: 90%;
+}
+#message-box {
+  width: 80%;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+#message-input {
+  line-height: 12px;
+  font-size: 15px;
+  margin-left: 10px;
+  width: 70%;
+  margin-top: 10px;
+  background: none;
+  border: none;
+  outline: none !important;
+  resize: none;
+}
+#message-submit {
+  border: none;
+  outline: none;
+  color: #4a90e2;
+  background: none !important;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 6px 10px;
+}
+#message-submit:hover {
+  background: #fff;
+  color: #333;
+}
+#chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  height: 70vh;
+  width: 50vw;
+}
 /* .signup-form {
   display: flex;
   flex-direction: row;

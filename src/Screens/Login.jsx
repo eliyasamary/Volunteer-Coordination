@@ -92,7 +92,7 @@ const Login = (props) => {
                 }}
                 className="input-field"
                 id="outlined-basic"
-                label="Username"
+                label="Email"
                 variant="outlined"
               />
               <TextField
@@ -116,7 +116,10 @@ const Login = (props) => {
                 </Button>
               </div>
             </form>
-            <a className="font-primary sign-in-up-btn btn" onClick={moveToSignUp}>
+            <a
+              className="font-primary sign-in-up-btn btn"
+              onClick={moveToSignUp}
+            >
               Sign-Up
             </a>
           </Box>
