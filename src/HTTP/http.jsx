@@ -110,7 +110,7 @@ const getRecommendations = async (id) => {
     return response.data;
   } catch (error) {
     console.error(
-      "An error occurred while fetching data / get task recs" + id,
+      "An error occurred while fetching data / get task recs " + id,
       error
     );
   }
