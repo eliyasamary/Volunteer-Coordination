@@ -12,7 +12,7 @@ const Template = () => {
         <Header></Header>
         <Navigation></Navigation>
       </Box>
-      <Outlet />
+      <Outlet className="Outlet" />
       <Footer></Footer>
     </Box>
   );

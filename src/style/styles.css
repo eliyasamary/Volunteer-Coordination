@@ -397,6 +397,10 @@ p {
   } */
 }
 
+.Outlet {
+  width: 100%;
+}
+
 @media only screen and (max-width: 750px) {
   .nav-btn {
     width: 125px;
