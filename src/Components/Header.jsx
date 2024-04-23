@@ -4,20 +4,14 @@ import "../style/styles.css";
 import logo from "../assets/logo.png";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useHistory } from "react-router-dom";
 
 const Header = () => {
   const [loading, setLoading] = useState(false);
-
-  const history = useHistory();
 
   const logout = () => {
     setLoading(true);
 
     localStorage.removeItem("token");
-    console.log("Logging out");
-    history.push("/");
-    console.log("move");
     window.location.reload(() => {
       setLoading(false);
     });
