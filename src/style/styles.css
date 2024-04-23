@@ -388,6 +388,9 @@ p {
   .header-title {
     width: 100%;
   }
+  .center-flex {
+    align-items: center;
+  }
   /* .nav-btn {
     width: 125px;
     font-size: 24px !important;
