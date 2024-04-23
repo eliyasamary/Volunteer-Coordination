@@ -86,7 +86,7 @@ const ItemPage = () => {
 
       console.log("User updated:", response.data);
       alert("Successfully finished the volunteering task!");
-      window.location.href = "/dashboard";
+      window.location.href = "/";
     } catch (error) {
       console.error("Error updating user tasks:", error);
       alert("Failed to finish the volunteering task. Please try again.");
