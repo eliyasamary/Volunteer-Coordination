@@ -56,11 +56,10 @@ const Login = (props) => {
         "name",
         JSON.stringify(response.data.user.name)
       );
-      console.log(authCtx.token, authCtx.userId, authCtx.userName);
       window.location.href = "/";
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setError(error.message);
       setLoading(false);
       setIsModalOpen(true);

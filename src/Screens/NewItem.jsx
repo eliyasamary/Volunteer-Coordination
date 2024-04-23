@@ -66,8 +66,6 @@ const NewItem = (props) => {
 
   const handleLocationChange = (event) => {
     const newLocation = event.target.value;
-    console.log("New Location:", newLocation);
-
     setLocation(newLocation);
     setData({ ...data, ["location"]: newLocation });
   };
@@ -77,14 +75,12 @@ const NewItem = (props) => {
     if (checked) {
       setSkills((prevSkills) => {
         const updatedSkills = [...prevSkills, name];
-        console.log("Skills:", updatedSkills);
         return updatedSkills;
       });
       setData((prevData) => ({ ...prevData, skills: [...skills, name] }));
     } else {
       setSkills((prevSkills) => {
         const updatedSkills = prevSkills.filter((skill) => skill !== name);
-        console.log("Skills:", updatedSkills);
         return updatedSkills;
       });
       setData((prevData) => ({
@@ -96,7 +92,6 @@ const NewItem = (props) => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log("Input Change:", name, value);
 
     setData({
       ...data,

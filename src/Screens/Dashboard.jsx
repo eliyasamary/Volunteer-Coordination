@@ -19,34 +19,22 @@ const Dashboard = () => {
 
         const user = await getUser(userId);
         const userData = user.data;
-        console.log("userData", userData);
-        console.log("1");
         const response = await getAllTasks();
         const filteredTasks = response.data.filter((task) =>
           task.volunteers.includes(userId.toString())
         );
-        console.log("2");
         const open = filteredTasks.filter((task) =>
           userData.tasks.includes(task._id)
         );
-        console.log("3");
-
         const closed = filteredTasks.filter((task) =>
           userData.completedTasks.includes(task._id)
         );
-        console.log("4");
-
         if (open.length > 0) {
           setMyTasks(open);
         }
         if (closed.length > 0) {
           setClosedTasks(closed);
         }
-        console.log("filltered:", filteredTasks);
-        console.log("open:", open);
-        console.log("closed:", closed);
-        console.log("sugg:", recommendationsTasks);
-
         const response2 = await getRecommendations(userId);
         if (response2?.length > 0) {
           setRecommendationsTasks(response2);
