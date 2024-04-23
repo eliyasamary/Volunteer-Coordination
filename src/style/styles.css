@@ -131,7 +131,7 @@ p {
   align-items: center;
   background-color: white;
   min-height: 700px;
-  width: 500px;
+  width: 350px;
   border-radius: 15px;
   /* box-shadow: 2px 2px 5px rgb(133, 133, 133); */
 }
@@ -141,8 +141,8 @@ p {
 .pink-container {
   background-color: #ba3b62;
   color: white;
-  height: 50px;
-  font-size: 28px;
+  min-height: 50px;
+  font-size: 19px;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -151,8 +151,8 @@ p {
 .green-container {
   background-color: #13aba6;
   color: white;
-  height: 50px;
-  font-size: 28px;
+  min-height: 50px;
+  font-size: 19px;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -160,8 +160,8 @@ p {
 .orange-container {
   background-color: #f37d21;
   color: white;
-  height: 50px;
-  font-size: 28px;
+  min-height: 50px;
+  font-size: 19px;
   align-items: center;
   display: flex;
   justify-content: center;
