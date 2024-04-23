@@ -296,14 +296,33 @@ p {
 }
 #messages {
   height: 90%;
+  width: 60%;
+  margin-top: 15px;
 }
 #message-box {
-  width: 80%;
+  width: 100%;
   border-radius: 20px;
   border: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+}
+.message > :first-child {
+  font-size: 13px;
+}
+.message > div {
+  margin-left: 10px;
+}
+.message {
+  color: white;
+  background-color: darkgray;
+  border-radius: 15px;
+  height: 40px;
+}
+#messages-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 #message-input {
   line-height: 12px;
