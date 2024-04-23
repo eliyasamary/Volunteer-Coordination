@@ -30,7 +30,9 @@ const Dashboard = () => {
         setMyTasks(filteredTasks);
 
         const response2 = await getRecommendations(userId);
-        setRecommendationsTasks(response2);
+        if (response2.length > 0) {
+          setRecommendationsTasks(response2);
+        }
 
         setLoading(false);
       } catch (error) {
@@ -85,19 +87,21 @@ const Dashboard = () => {
         <div className="card">
           <h2 className="font-primary card-title">Suggested Tasks</h2>
           <div className="card-items">
-            {recommendationsTasks.length > 0
-              ? recommendationsTasks.map((item) => (
-                  <Link
-                    to={`ItemPage/${item._id}`}
-                    key={item._id}
-                    className="link-decoration"
-                  >
-                    <p key={item._id} className="detail-text orange-container">
-                      {item.title}
-                    </p>
-                  </Link>
-                ))
-              : null}
+            {recommendationsTasks.length > 0 ? (
+              recommendationsTasks.map((item) => (
+                <Link
+                  to={`ItemPage/${item._id}`}
+                  key={item._id}
+                  className="link-decoration"
+                >
+                  <p key={item._id} className="detail-text orange-container">
+                    {item.title}
+                  </p>
+                </Link>
+              ))
+            ) : (
+              <p>None</p>
+            )}
           </div>
         </div>
       </div>
