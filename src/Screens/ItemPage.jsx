@@ -62,7 +62,7 @@ const ItemPage = () => {
       console.log("Task updated: ", response2.data);
 
       alert("Successfully signed up for the volunteering task!");
-      window.location.href = "/allItems";
+      window.location.href = "/";
     } catch (error) {
       console.error("Error updating user tasks:", error);
       alert("Failed to sign up for the volunteering task. Please try again.");
