@@ -12,9 +12,7 @@ const Header = () => {
     setLoading(true);
 
     localStorage.removeItem("token");
-    window.location.reload(() => {
-      setLoading(false);
-    });
+    window.location.href = "/";
   };
 
   if (loading) {
