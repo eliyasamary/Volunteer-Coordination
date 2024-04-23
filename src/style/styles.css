@@ -98,7 +98,7 @@ h2 {
 .center-flex {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .center-flex-col {
