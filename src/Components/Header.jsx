@@ -4,17 +4,20 @@ import "../style/styles.css";
 import logo from "../assets/logo.png";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [loading, setLoading] = useState(false);
+
   const logout = () => {
     setLoading(true);
-    console.log("Logging out");
+    // console.log("Logging out");
     localStorage.removeItem("token");
     window.location.reload(() => {
       setLoading(false);
     });
   };
+
   if (loading) {
     return (
       <Box className="loading">
@@ -31,7 +34,9 @@ const Header = () => {
         {localStorage.getItem("token") && (
           <Box className="container-flex logout">
             <span>Logout</span>
-            <LogoutIcon onClick={logout}></LogoutIcon>
+            <LogoutIcon onClick={logout}>
+              <Link to="/" />
+            </LogoutIcon>
           </Box>
         )}
       </Box>
