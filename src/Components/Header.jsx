@@ -13,9 +13,11 @@ const Header = () => {
 
   const logout = () => {
     setLoading(true);
-    // console.log("Logging out");
+
     localStorage.removeItem("token");
+    console.log("Logging out");
     history.push("/");
+    console.log("move");
     window.location.reload(() => {
       setLoading(false);
     });
