@@ -112,7 +112,7 @@ const Dashboard = () => {
             {closedTasks.length > 0 ? (
               closedTasks.map((item) => (
                 <Link
-                  to={`ItemPage/${item._id}`}
+                  to={`/ItemPage/${item._id}`}
                   key={item._id}
                   className="link-decoration"
                 >
@@ -132,7 +132,7 @@ const Dashboard = () => {
             {recommendationsTasks.length > 0 ? (
               recommendationsTasks.map((item) => (
                 <Link
-                  to={`ItemPage/${item._id}`}
+                  to={`/ItemPage/${item._id}`}
                   key={item._id}
                   className="link-decoration"
                 >
