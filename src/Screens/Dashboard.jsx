@@ -61,17 +61,19 @@ const Dashboard = () => {
         <div className="card">
           <h2 className="font-primary card-title">My Tasks</h2>
           <div className="card-items">
-            {myTasks.map((item) => (
-              <Link
-                to={`/ItemPage/${item._id}`}
-                key={item._id}
-                className="link-decoration"
-              >
-                <p key={item._id} className="detail-text pink-container">
-                  {item.title}
-                </p>
-              </Link>
-            ))}
+            {myTasks.length > 0
+              ? myTasks.map((item) => (
+                  <Link
+                    to={`/ItemPage/${item._id}`}
+                    key={item._id}
+                    className="link-decoration"
+                  >
+                    <p key={item._id} className="detail-text pink-container">
+                      {item.title}
+                    </p>
+                  </Link>
+                ))
+              : null}
           </div>
         </div>
         <div className="card">
@@ -83,17 +85,19 @@ const Dashboard = () => {
         <div className="card">
           <h2 className="font-primary card-title">Suggested Tasks</h2>
           <div className="card-items">
-            {recommendationsTasks.map((item) => (
-              <Link
-                to={`ItemPage/${item._id}`}
-                key={item._id}
-                className="link-decoration"
-              >
-                <p key={item._id} className="detail-text orange-container">
-                  {item.title}
-                </p>
-              </Link>
-            ))}
+            {recommendationsTasks.length > 0
+              ? recommendationsTasks.map((item) => (
+                  <Link
+                    to={`ItemPage/${item._id}`}
+                    key={item._id}
+                    className="link-decoration"
+                  >
+                    <p key={item._id} className="detail-text orange-container">
+                      {item.title}
+                    </p>
+                  </Link>
+                ))
+              : null}
           </div>
         </div>
       </div>
