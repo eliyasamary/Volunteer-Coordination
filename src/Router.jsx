@@ -6,13 +6,14 @@ import ItemPage from "./Screens/ItemPage";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import Template from "./Template";
+import ErrorNotFound from "./Screens/ErrorNotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Template />,
     default: true,
-    // errorElement: <ErrorNotFound />,
+    errorElement: <ErrorNotFound />,
     children: [
       {
         path: "/allItems",
@@ -39,11 +40,6 @@ const router = createBrowserRouter([
         element: <ItemPage />,
         exact: true,
       },
-      // {
-      //   path: "/signup",
-      //   element: <NewItem />,
-      //   exact: true,
-      // },
     ],
   },
 ]);
