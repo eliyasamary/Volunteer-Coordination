@@ -44,7 +44,6 @@ const Login = (props) => {
   async function loginHandler(email, password) {
     try {
       setLoading(true);
-      // setIsAuthenticating(true);
       const response = await loginUser(email, password);
       authCtx.authenticate(
         response.token,
@@ -65,7 +64,6 @@ const Login = (props) => {
       setError(error.message);
       setLoading(false);
       setIsModalOpen(true);
-      // setIsAuthenticating(false);
     }
   }
 

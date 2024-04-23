@@ -144,10 +144,7 @@ const NewItem = (props) => {
         <Box className="container-primary">
           <Box className="content-box">
             <h1 className="title">Sign-up</h1>
-            <form
-              // onSubmit={handleSubmit}
-              className="flex-container-col signup-form"
-            >
+            <form className="flex-container-col signup-form">
               <TextField
                 className="input-field"
                 label="Name"

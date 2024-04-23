@@ -8,16 +8,9 @@ import { Link } from "react-router-dom";
 const Dashboard = () => {
   const [myTasks, setMyTasks] = useState([]);
   const [closedTasks, setClosedTasks] = useState([]);
-  // const [completedTasks, setCompletedTasks] = useState([]);
-  // const [fetchCount, setFetchCount] = useState(0);
   const [loading, setLoading] = useState(true);
-  // const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("id")));
   const userId = JSON.parse(localStorage.getItem("id"));
   const [recommendationsTasks, setRecommendationsTasks] = useState([]);
-
-  // const handleFetch = () => {
-  //   setFetchCount((prevCount) => prevCount + 1);
-  // };
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -49,7 +42,6 @@ const Dashboard = () => {
         if (closed.length > 0) {
           setClosedTasks(closed);
         }
-        // console.log("Filtered tasks:", filteredTasks);
         console.log("filltered:", filteredTasks);
         console.log("open:", open);
         console.log("closed:", closed);
@@ -68,12 +60,7 @@ const Dashboard = () => {
     };
 
     fetchTasks();
-    // }, [userId, fetchCount]);
   }, [userId]);
-
-  // useEffect(() => {
-  //   handleFetch();
-  // }, []);
 
   if (loading) {
     return (
