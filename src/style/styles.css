@@ -426,4 +426,7 @@ p {
   .detail-title {
     width: 28%;
   }
+  .item-box {
+    width: 360px;
+  }
 }
