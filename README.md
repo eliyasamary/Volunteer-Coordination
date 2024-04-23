@@ -17,10 +17,13 @@ The application features a well-defined set of routes that guide users through d
 5. **View Task Details:** Click on a specific task to see its details.
 6. **Sign for a Task:** Click "I want to sign up for this volunteering task" to submit for a specific task.
 7. **Complete a Task:** Click "I finished the task" to mark a task as completed.
-8. **Dashboard:** Navigate to the dashboard by clicking on the "DASHBOARD" button to view "My Tasks", "Tasks I Performed", and "Suggested Tasks" [of the user].
+8. **Dashboard:** Navigate to the dashboard by clicking on the "DASHBOARD" button to view:
+   - "My Tasks" - A list of all the volunteering tasks I have signed up for.
+   - "Tasks I Performed" - A list of all the volunteering tasks I've completed.
+   - "Suggested Tasks" - A list of all the suggested volunteering tasks offered by the system based on skill or location.
 9. **View Task Details on Dashboard:** Click on a task to view its details directly from the dashboard.
 10. **Navigate Back:** Return to the previous page by clicking the "Go Back" button.
-<!-- Add for meaasges -->
+11. **Messages:** Send a message to all users participating in the same tasks as me.
 
 ## Before you start
 
@@ -34,14 +37,17 @@ The application features a well-defined set of routes that guide users through d
 ## How to Use
 
 1. ### **Log-in / Sign-up:**
-   - Route:
-   - Summary:
+   - Route: "/" brfore login
+   - Summary: Enter your registered "Email" and "Password" and sign in, or click on "Sign-up", fill in the required information, and then click "Submit"
 2. ### **Retrieve all tasks:**
    - Route: "/" or "/allItems" [after login]
    - Summary: The home page is the main hub of the application, showcasing a comprehensive list of all available volunteering tasks. Users can effortlessly sign up for tasks directly from this page.
 3. ### **Retrieve a specific task by ID:**
    - Route: "/ItemPage/:id"
    - Summary: By clicking on a task, users can view its details and choose to sign up for it or mark it as completed if they have already signed up.
-4. ### **Create a new user:**
+4. ### **Dashboard:**
    - Route: "/dashboard"
    - Summary: On the dashboard, users can easily see "My Tasks", "Tasks I've Completed", and "Suggested Tasks" tailored to their profile.
+5. ### **Messages:**
+   - Route: "/messages"
+   - Summary: Send a message to all users participating in the same task as you by typing your message and clicking "SEND".
