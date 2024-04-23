@@ -39,6 +39,15 @@ const updateUser = async (id, data) => {
   }
 };
 
+const updateTask = async (id, data) => {
+  try {
+    const response = await http.patch("/api/v1/volunteer-tasks/" + id, data);
+    return response.data;
+  } catch (error) {
+    console.error("An error occurred while fetching data / update task", error);
+  }
+};
+
 const getUser = async (id) => {
   try {
     const response = await http.get("/api/v1/volunteer-persons/" + id);
@@ -101,5 +110,6 @@ export {
   getAllTasks,
   getTask,
   updateUser,
+  updateTask,
   getUser,
 };

@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { getTask, updateUser, getUser } from "../HTTP/http";
+import { getTask, updateUser, getUser, updateTask } from "../HTTP/http";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const ItemPage = () => {
@@ -52,7 +52,15 @@ const ItemPage = () => {
       const updatedUser = { ...user, tasks: [...user.tasks, itemId] };
       const response = await updateUser(userId, updatedUser);
 
-      console.log("User updated:", response.data);
+      const updateedTask = {
+        ...item,
+        volunteers: [...item.volunteers, userId],
+      };
+      const response2 = await updateTask(itemId, updateedTask);
+
+      console.log("User updated: ", response.data);
+      console.log("Task updated: ", response2.data);
+
       alert("Successfully signed up for the volunteering task!");
       window.location.href = "/allItems";
     } catch (error) {
