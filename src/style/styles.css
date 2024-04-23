@@ -98,7 +98,7 @@ h2 {
 .center-flex {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .center-flex-col {
@@ -388,9 +388,9 @@ p {
   .header-title {
     width: 100%;
   }
-  .center-flex {
+  /* .center-flex {
     align-items: center;
-  }
+  } */
   /* .nav-btn {
     width: 125px;
     font-size: 24px !important;
