@@ -134,7 +134,6 @@ p {
   width: 350px;
   border-radius: 15px;
   margin-bottom: 20px;
-  /* box-shadow: 2px 2px 5px rgb(133, 133, 133); */
 }
 .card-title {
   font-size: 40px;
@@ -147,7 +146,6 @@ p {
   align-items: center;
   display: flex;
   justify-content: center;
-  /* text-shadow: 1px 1px 1px black; */
 }
 .green-container {
   background-color: #13aba6;
@@ -359,20 +357,8 @@ p {
   height: 70vh;
   width: 50vw;
 }
-/* .signup-form {
-  display: flex;
-  flex-direction: row;
-  width: 100vh;
-  /* justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  height: 100vh; */
 
-@media only screen and (max-width: 1000px) {
-  /* .card {
-    width: 100%;
-  } */
+@media only screen and (max-width: 1130px) {
   #flex-cards {
     flex-direction: column;
   }
@@ -388,17 +374,10 @@ p {
   .header-title {
     width: 100%;
   }
-  /* .center-flex {
-    align-items: center;
-  } */
-  /* .nav-btn {
-    width: 125px;
-    font-size: 24px !important;
-  } */
-}
 
-.Outlet {
-  width: 100%;
+  body {
+    display: block !important;
+  }
 }
 
 @media only screen and (max-width: 750px) {
@@ -408,7 +387,7 @@ p {
     background-color: #3a3630 !important;
   }
   .nav-component {
-    gap: 25px;
+    gap: 4px;
   }
   .item-box {
     margin: 15px;
@@ -417,16 +396,28 @@ p {
     margin: 15px;
   }
   .detail-box {
-    /* max-width: 100%; */
-    width: 600px;
+    width: 300px;
     min-height: 100px;
     height: inherit;
-    /* margin: 15px; */
   }
   .detail-title {
-    width: 28%;
+    width: 100%;
+    text-align: center;
+  }
+  .detail-text {
+    text-align: center;
+    padding-left: 0;
   }
   .item-box {
-    width: 360px;
+    width: 338px;
+  }
+  .flex-container-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .btn-primary {
+    width: 88%;
+    height: 100%;
+    margin: 0 !important;
   }
 }
